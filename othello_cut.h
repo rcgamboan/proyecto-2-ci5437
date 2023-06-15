@@ -16,7 +16,7 @@
  *
  *  Last revision: 1/11/2016
  *
- */
+*/
 
 #include <cassert>
 #include <iostream>

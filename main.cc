@@ -38,7 +38,7 @@ class hash_table_t : public unordered_map<state_t, stored_info_t, hash_function_
 
 hash_table_t TTable[2];
 
-int negamax(state_t state, int depth, int color, bool use_tt = false){
+int negamax(state_t state, int depth, int color, bool use_tt = true){
 
     if (depth == 0 || state.terminal()){
         return color * state.value();
@@ -50,19 +50,143 @@ int negamax(state_t state, int depth, int color, bool use_tt = false){
         
         ++generated;
         state_t child = state.move(color == 1, pos);
-        int value = -negamax(child, depth - 1, -color, use_tt);
-        if (value > alpha){
-            alpha = value;
-        }
         
+        if (use_tt){
+            cout << "using Transposition Table" << endl;
+            auto it = TTable[color].find(state);
+            if (it != TTable[color].end()){
+                if (it->second.type_ == stored_info_t::EXACT){
+                    return it->second.value_;
+                }
+                else if (it->second.type_ == stored_info_t::LOWER){
+                    alpha = max(alpha, it->second.value_);
+                }
+                else if (it->second.type_ == stored_info_t::UPPER){
+                    alpha = max(alpha, it->second.value_);
+                }
+            }
+        } else {
+            int value = -negamax(child, depth - 1, -color, use_tt);
+            if (value > alpha){
+                alpha = value;
+            }
+        }
+        ++expanded;        
     }
     return alpha;
+};
+
+int negamax(state_t state, int depth, int alpha, int beta, int color, bool use_tt = false){
+
+    if (depth == 0 || state.terminal()){
+        return color * state.value();
+    }
+
+    int score = INT_MIN;
+
+    for (int pos = 0; pos < DIM; ++pos){
+        
+        ++generated;
+        state_t child = state.move(color == 1, pos);
+        int value = -negamax(child, depth - 1, -beta, -alpha, -color, use_tt);
+        score = max(score, value);
+        alpha = max(alpha, value);
+        if (alpha >= beta){
+            break;
+        }
+        ++expanded;
+        
+    }
+    return score;
 
 };
 
-int negamax(state_t state, int depth, int alpha, int beta, int color, bool use_tt = false);
-int scout(state_t state, int depth, int color, bool use_tt = false);
-int negascout(state_t state, int depth, int alpha, int beta, int color, bool use_tt = false);
+bool TEST(state_t state, int depth, int score, int color, char * condition){
+
+    if (depth == 0 || state.terminal()){
+        if (condition == ">"){
+            return state.value() > score;
+        } else if (condition == "<"){
+            return state.value() < score;
+        } else if (condition == "="){
+            return state.value() == score;
+        } else if (condition == ">="){
+            return state.value() >= score;
+        } else if (condition == "<="){
+            return state.value() <= score;
+        }        
+    }
+
+    for (int pos = 0; pos < DIM; ++pos){
+        state_t child = state.move(color == 1, pos);
+        if (pos == 0){
+            if (color == 1 && TEST(child, depth - 1, score, -color, condition)){
+                return true;
+            } else if (color == 0 && !TEST(child, depth - 1, score, -color, condition)){
+                return false;
+            }
+        }
+    }
+    return !(color == 1);
+
+}
+
+int scout(state_t state, int depth, int color, bool use_tt = false){
+
+    if (depth == 0 || state.terminal()){
+        return color * state.value();
+    }
+
+    int score = 0;
+
+    for (int pos = 0; pos < DIM; ++pos){
+        
+        ++generated;
+        state_t child = state.move(color == 1, pos);
+        
+        if (pos == 0){
+            score = scout(child, depth - 1, -color, use_tt);
+        }else {
+            // Max node
+            if (color == 1 && TEST(child, depth, score, -color, ">")){
+                score = scout(child, depth - 1, -color, use_tt);
+            } else if (color == 0 && !TEST(child, depth, score, -color, ">=")){
+                score = scout(child, depth - 1, -color, use_tt);
+            }
+        }
+        ++expanded;
+    }
+    return score;
+};
+
+int negascout(state_t state, int depth, int alpha, int beta, int color, bool use_tt = false){
+
+    if (depth == 0 || state.terminal()){
+        return color * state.value();
+    }
+
+    for (int pos = 0; pos < DIM; ++pos){
+        
+        ++generated;
+        state_t child = state.move(color == 1, pos);
+        int score;
+        
+        if (pos == 0){
+            score = -negascout(child, depth - 1, -beta, -alpha, -color, use_tt);
+        } else {
+            score = -negascout(child, depth - 1, -alpha - 1, -alpha, -color, use_tt);
+            if (alpha < score && score < beta){
+                score = -negascout(child, depth - 1, -beta, -score, -color, use_tt);
+            }
+        }       
+        alpha = max(alpha, score);
+        ++expanded;
+        if (alpha >= beta){
+            break;
+        }
+    }
+    return alpha;
+};
 
 int main(int argc, const char **argv) {
     state_t pv[128];
@@ -120,11 +244,11 @@ int main(int argc, const char **argv) {
             if( algorithm == 1 ) {
                 value = negamax(pv[i], 0, color, use_tt);
             } else if( algorithm == 2 ) {
-                //value = negamax(pv[i], 0, -200, 200, color, use_tt);
+                value = negamax(pv[i], 0, -200, 200, color, use_tt);
             } else if( algorithm == 3 ) {
-                //value = scout(pv[i], 0, color, use_tt);
+                value = scout(pv[i], 0, color, use_tt);
             } else if( algorithm == 4 ) {
-                //value = negascout(pv[i], 0, -200, 200, color, use_tt);
+                value = negascout(pv[i], 0, -200, 200, color, use_tt);
             }
         } catch( const bad_alloc &e ) {
             cout << "size TT[0]: size=" << TTable[0].size() << ", #buckets=" << TTable[0].bucket_count() << endl;
