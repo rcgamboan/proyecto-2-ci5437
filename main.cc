@@ -2,12 +2,14 @@
 // Universidad Simon Bolivar, 2012.
 // Author: Blai Bonet
 // Last Revision: 1/11/16
-// Modified by: 
+// Modified by: Jesus Bandez
+//              Roberto Gamboa
 
 #include <iostream>
 #include <limits>
 #include "othello_cut.h" // won't work correctly until .h is fixed!
 #include "utils.h"
+#include <climits>
 
 #include <unordered_map>
 
@@ -36,10 +38,28 @@ class hash_table_t : public unordered_map<state_t, stored_info_t, hash_function_
 
 hash_table_t TTable[2];
 
-//int maxmin(state_t state, int depth, bool use_tt);
-//int minmax(state_t state, int depth, bool use_tt = false);
-//int maxmin(state_t state, int depth, bool use_tt = false);
-int negamax(state_t state, int depth, int color, bool use_tt = false);
+int negamax(state_t state, int depth, int color, bool use_tt = false){
+
+    if (depth == 0 || state.terminal()){
+        return color * state.value();
+    }
+
+    int alpha = INT_MIN;
+
+    for (int pos = 0; pos < DIM; ++pos){
+        
+        ++generated;
+        state_t child = state.move(color == 1, pos);
+        int value = -negamax(child, depth - 1, -color, use_tt);
+        if (value > alpha){
+            alpha = value;
+        }
+        
+    }
+    return alpha;
+
+};
+
 int negamax(state_t state, int depth, int alpha, int beta, int color, bool use_tt = false);
 int scout(state_t state, int depth, int color, bool use_tt = false);
 int negascout(state_t state, int depth, int alpha, int beta, int color, bool use_tt = false);
@@ -65,11 +85,12 @@ int main(int argc, const char **argv) {
     pv[0] = state;
     cout << "done!" << endl;
 
-#if 0
     // print principal variation
-    for( int i = 0; i <= npv; ++i )
+    /*
+    for( int i = 0; i <= npv; ++i ){
         cout << pv[npv - i];
-#endif
+    }
+    */
 
     // Print name of algorithm
     cout << "Algorithm: ";
@@ -86,7 +107,7 @@ int main(int argc, const char **argv) {
     // Run algorithm along PV (bacwards)
     cout << "Moving along PV:" << endl;
     for( int i = 0; i <= npv; ++i ) {
-        //cout << pv[i];
+        cout << pv[i];
         int value = 0;
         TTable[0].clear();
         TTable[1].clear();
@@ -97,7 +118,7 @@ int main(int argc, const char **argv) {
 
         try {
             if( algorithm == 1 ) {
-                //value = negamax(pv[i], 0, color, use_tt);
+                value = negamax(pv[i], 0, color, use_tt);
             } else if( algorithm == 2 ) {
                 //value = negamax(pv[i], 0, -200, 200, color, use_tt);
             } else if( algorithm == 3 ) {
