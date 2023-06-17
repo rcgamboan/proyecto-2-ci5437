@@ -1,0 +1,309 @@
+Extracting principal variation (PV) with 33 plays ... done!
+Algorithm: Negascout w/ transposition table
+Moving along PV:
++------+
+|OOOOO&|
+|OO&O&O|
+|&&O&OO|
+|&&&OOO|
+|OO&&OO|
+|&&&&&O|
++------+
+34. White moves: value=-4, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|OOOOO.|
+|OO&OOO|
+|&&O&OO|
+|&&&OOO|
+|OO&&OO|
+|&&&&&O|
++------+
+33. Black moves: value=-7, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
++------+
+|O&&&..|
+|OO&&&O|
+|&&O&&O|
+|&&&O&O|
+|OO&&OO|
+|&&&&&O|
++------+
+32. White moves: value=8, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|O&&&..|
+|OO&&&O|
+|&&O&&O|
+|&&&O&O|
+|OO&&OO|
+|&&&&&O|
++------+
+31. Black moves: value=8, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|O&&&..|
+|OO&&&O|
+|&&O&&O|
+|&&&O&O|
+|OO&&&&|
+|&&&&&.|
++------+
+30. White moves: value=13, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|O&&&..|
+|OO&&&O|
+|&&O&&O|
+|&&&OOO|
+|OO&OO.|
+|&&&&&.|
++------+
+29. Black moves: value=6, #expanded=0, #generated=0, seconds=9.99891e-07, #generated/second=0
++------+
+|.&&&..|
+|O&&&&O|
+|&&&&&O|
+|&&&OOO|
+|OO&OO.|
+|&&&&&.|
++------+
+28. White moves: value=11, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
++------+
+|.&&&..|
+|OO&&&O|
+|.OO&&O|
+|&O&OOO|
+|OOOOO.|
+|&&&&&.|
++------+
+27. Black moves: value=0, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
++------+
+|.&&&..|
+|OO&&&O|
+|.OO&&O|
+|&O&OOO|
+|OOO&..|
+|&&&&&.|
++------+
+26. White moves: value=3, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|OO&&&O|
+|.OO&&O|
+|&O&OOO|
+|OOOO..|
+|&&&&..|
++------+
+25. Black moves: value=0, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|OO&&&O|
+|.OO&&O|
+|&&&OOO|
+|.&OO..|
+|&&&&..|
++------+
+24. White moves: value=5, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|OO&&&O|
+|.OO&&O|
+|&&OOOO|
+|..OO..|
+|&&&&..|
++------+
+23. Black moves: value=2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|.O&&&O|
+|.&O&&O|
+|&&&OOO|
+|..OO..|
+|&&&&..|
++------+
+22. White moves: value=7, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
++------+
+|.&&&..|
+|.O&&&O|
+|.&O&&O|
+|&&&OOO|
+|..OO..|
+|.OO&..|
++------+
+21. Black moves: value=2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|.O&&&O|
+|.&O&&O|
+|&&&O&O|
+|..O&..|
+|.O.&..|
++------+
+20. White moves: value=7, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|.O&&&O|
+|.OO&&O|
+|.O&O&O|
+|..O&..|
+|.O.&..|
++------+
+19. Black moves: value=2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|.O&&&O|
+|.OO&&O|
+|.O&O&O|
+|..&&..|
+|...&..|
++------+
+18. White moves: value=5, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
++------+
+|.&&&..|
+|.O&&.O|
+|.OO&OO|
+|.O&O&O|
+|..&&..|
+|...&..|
++------+
+17. Black moves: value=2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|.O&&..|
+|.OO&&&|
+|.O&O&O|
+|..&&..|
+|...&..|
++------+
+16. White moves: value=7, #expanded=0, #generated=0, seconds=9.99891e-07, #generated/second=0
++------+
+|.&&&..|
+|.O&&..|
+|.OO&O.|
+|.O&OOO|
+|..&&..|
+|...&..|
++------+
+15. Black moves: value=2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|..&&..|
+|.&&&O.|
+|.O&OOO|
+|..&&..|
+|...&..|
++------+
+14. White moves: value=7, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|..&&..|
+|..O&O.|
+|.OOOOO|
+|..&&..|
+|...&..|
++------+
+13. Black moves: value=2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|..&&..|
+|..O&O.|
+|.O&&&.|
+|..&&..|
+|...&..|
++------+
+12. White moves: value=9, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|..&O..|
+|..OOO.|
+|.O&O&.|
+|..&O..|
+|......|
++------+
+11. Black moves: value=0, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|.&&&..|
+|..&O..|
+|..O&O.|
+|.O&&&.|
+|..&...|
+|......|
++------+
+10. White moves: value=5, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|..O&..|
+|..OO..|
+|..O&O.|
+|.O&&&.|
+|..&...|
+|......|
++------+
+9. Black moves: value=0, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|...&..|
+|..&&..|
+|..O&O.|
+|.O&&&.|
+|..&...|
+|......|
++------+
+8. White moves: value=5, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|......|
+|..&O..|
+|..OOO.|
+|.O&&&.|
+|..&...|
+|......|
++------+
+7. Black moves: value=0, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
++------+
+|......|
+|..&O..|
+|..O&..|
+|.O&&&.|
+|..&...|
+|......|
++------+
+6. White moves: value=3, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|......|
+|..&O..|
+|..OO..|
+|.O&O..|
+|..&...|
+|......|
++------+
+5. Black moves: value=-2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|......|
+|..&...|
+|..&&..|
+|.O&O..|
+|..&...|
+|......|
++------+
+4. White moves: value=3, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|......|
+|..&...|
+|..&&..|
+|.OOO..|
+|......|
+|......|
++------+
+3. Black moves: value=0, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|......|
+|..&...|
+|..&&..|
+|..&O..|
+|......|
+|......|
++------+
+2. White moves: value=3, #expanded=0, #generated=0, seconds=9.99891e-07, #generated/second=0
++------+
+|......|
+|......|
+|..O&..|
+|..&O..|
+|......|
+|......|
++------+
+1. Black moves: value=0, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
