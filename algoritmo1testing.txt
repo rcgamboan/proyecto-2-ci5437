@@ -9,7 +9,7 @@ Moving along PV:
 |OO&&OO|
 |&&&&&O|
 +------+
-34. White moves: value=-4, #expanded=0, #generated=0, seconds=4.99981e-06, #generated/second=0
+34. White moves: value=-4, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |OOOOO.|
 |OO&OOO|
@@ -18,7 +18,7 @@ Moving along PV:
 |OO&&OO|
 |&&&&&O|
 +------+
-33. Black moves: value=4, #expanded=1, #generated=1, seconds=1.09999e-05, #generated/second=90910.3
+33. Black moves: value=4, #expanded=1, #generated=1, seconds=0, #generated/second=inf
 +------+
 |O&&&..|
 |OO&&&O|
@@ -27,7 +27,7 @@ Moving along PV:
 |OO&&OO|
 |&&&&&O|
 +------+
-32. White moves: value=-4, #expanded=3, #generated=3, seconds=1.19996e-05, #generated/second=250008
+32. White moves: value=-4, #expanded=3, #generated=3, seconds=0, #generated/second=inf
 +------+
 |O&&&..|
 |OO&&&O|
@@ -36,7 +36,7 @@ Moving along PV:
 |OO&&OO|
 |&&&&&O|
 +------+
-31. Black moves: value=4, #expanded=4, #generated=3, seconds=1.00001e-05, #generated/second=299998
+31. Black moves: value=4, #expanded=4, #generated=3, seconds=1.3e-05, #generated/second=230769
 +------+
 |O&&&..|
 |OO&&&O|
@@ -45,7 +45,7 @@ Moving along PV:
 |OO&&&&|
 |&&&&&.|
 +------+
-30. White moves: value=-8, #expanded=5, #generated=5, seconds=1.49999e-05, #generated/second=333336
+30. White moves: value=-4, #expanded=11, #generated=10, seconds=4e-05, #generated/second=250000
 +------+
 |O&&&..|
 |OO&&&O|
@@ -54,7 +54,7 @@ Moving along PV:
 |OO&OO.|
 |&&&&&.|
 +------+
-29. Black moves: value=8, #expanded=6, #generated=6, seconds=1.40001e-05, #generated/second=428568
+29. Black moves: value=4, #expanded=12, #generated=11, seconds=3.3e-05, #generated/second=333333
 +------+
 |.&&&..|
 |O&&&&O|
@@ -63,7 +63,7 @@ Moving along PV:
 |OO&OO.|
 |&&&&&.|
 +------+
-28. White moves: value=-8, #expanded=9, #generated=9, seconds=1.80001e-05, #generated/second=499996
+28. White moves: value=-4, #expanded=15, #generated=14, seconds=6.2e-05, #generated/second=225806
 +------+
 |.&&&..|
 |OO&&&O|
@@ -72,7 +72,7 @@ Moving along PV:
 |OOOOO.|
 |&&&&&.|
 +------+
-27. Black moves: value=-3, #expanded=24, #generated=23, seconds=5.70002e-05, #generated/second=403507
+27. Black moves: value=-2, #expanded=39, #generated=36, seconds=3.8e-05, #generated/second=947368
 +------+
 |.&&&..|
 |OO&&&O|
@@ -81,7 +81,7 @@ Moving along PV:
 |OOO&..|
 |&&&&&.|
 +------+
-26. White moves: value=8, #expanded=56, #generated=50, seconds=0.000123, #generated/second=406503
+26. White moves: value=8, #expanded=57, #generated=51, seconds=6.4e-05, #generated/second=796875
 +------+
 |.&&&..|
 |OO&&&O|
@@ -90,7 +90,7 @@ Moving along PV:
 |OOOO..|
 |&&&&..|
 +------+
-25. Black moves: value=-8, #expanded=248, #generated=223, seconds=0.000488, #generated/second=456967
+25. Black moves: value=-8, #expanded=358, #generated=328, seconds=0.000412, #generated/second=796116
 +------+
 |.&&&..|
 |OO&&&O|
@@ -99,7 +99,7 @@ Moving along PV:
 |.&OO..|
 |&&&&..|
 +------+
-24. White moves: value=7, #expanded=388, #generated=354, seconds=0.00074, #generated/second=478378
+24. White moves: value=8, #expanded=541, #generated=490, seconds=0.000591, #generated/second=829103
 +------+
 |.&&&..|
 |OO&&&O|
@@ -108,7 +108,7 @@ Moving along PV:
 |..OO..|
 |&&&&..|
 +------+
-23. Black moves: value=-9, #expanded=1001, #generated=907, seconds=0.002, #generated/second=453500
+23. Black moves: value=-2, #expanded=1139, #generated=1041, seconds=0.001358, #generated/second=766568
 +------+
 |.&&&..|
 |.O&&&O|
@@ -117,7 +117,7 @@ Moving along PV:
 |..OO..|
 |&&&&..|
 +------+
-22. White moves: value=18, #expanded=1348, #generated=1223, seconds=0.002705, #generated/second=452126
+22. White moves: value=-16, #expanded=8415, #generated=7690, seconds=0.008805, #generated/second=873367
 +------+
 |.&&&..|
 |.O&&&O|
@@ -126,7 +126,7 @@ Moving along PV:
 |..OO..|
 |.OO&..|
 +------+
-21. Black moves: value=-18, #expanded=9705, #generated=8682, seconds=0.018399, #generated/second=471873
+21. Black moves: value=-18, #expanded=32406, #generated=28971, seconds=0.033237, #generated/second=871649
 +------+
 |.&&&..|
 |.O&&&O|
@@ -135,7 +135,7 @@ Moving along PV:
 |..O&..|
 |.O.&..|
 +------+
-20. White moves: value=-8, #expanded=4295, #generated=3638, seconds=0.005333, #generated/second=682168
+20. White moves: value=22, #expanded=7767, #generated=6729, seconds=0.007585, #generated/second=887146
 +------+
 |.&&&..|
 |.O&&&O|
@@ -144,7 +144,7 @@ Moving along PV:
 |..O&..|
 |.O.&..|
 +------+
-19. Black moves: value=8, #expanded=20050, #generated=17266, seconds=0.015108, #generated/second=1.14284e+06
+19. Black moves: value=-27, #expanded=104932, #generated=93441, seconds=0.09954, #generated/second=938728
 +------+
 |.&&&..|
 |.O&&&O|
@@ -153,7 +153,7 @@ Moving along PV:
 |..&&..|
 |...&..|
 +------+
-18. White moves: value=-22, #expanded=21965, #generated=18809, seconds=0.011437, #generated/second=1.64457e+06
+18. White moves: value=27, #expanded=286878, #generated=251827, seconds=0.272361, #generated/second=924608
 +------+
 |.&&&..|
 |.O&&.O|
@@ -161,58 +161,4 @@ Moving along PV:
 |.O&O&O|
 |..&&..|
 |...&..|
-+------+
-17. Black moves: value=22, #expanded=43655, #generated=38620, seconds=0.019498, #generated/second=1.98072e+06
-+------+
-|.&&&..|
-|.O&&..|
-|.OO&&&|
-|.O&O&O|
-|..&&..|
-|...&..|
-+------+
-16. White moves: value=6, #expanded=78559, #generated=71119, seconds=0.036312, #generated/second=1.95855e+06
-+------+
-|.&&&..|
-|.O&&..|
-|.OO&O.|
-|.O&OOO|
-|..&&..|
-|...&..|
-+------+
-15. Black moves: value=-16, #expanded=913185, #generated=839859, seconds=0.405357, #generated/second=2.0719e+06
-+------+
-|.&&&..|
-|..&&..|
-|.&&&O.|
-|.O&OOO|
-|..&&..|
-|...&..|
-+------+
-14. White moves: value=-16, #expanded=513926, #generated=472787, seconds=0.234286, #generated/second=2.01799e+06
-+------+
-|.&&&..|
-|..&&..|
-|..O&O.|
-|.OOOOO|
-|..&&..|
-|...&..|
-+------+
-13. Black moves: value=-16, #expanded=3296060, #generated=3032053, seconds=1.48506, #generated/second=2.0417e+06
-+------+
-|.&&&..|
-|..&&..|
-|..O&O.|
-|.O&&&.|
-|..&&..|
-|...&..|
-+------+
-12. White moves: value=-4, #expanded=2395947, #generated=2145619, seconds=1.1389, #generated/second=1.88394e+06
-+------+
-|.&&&..|
-|..&O..|
-|..OOO.|
-|.O&O&.|
-|..&O..|
-|......|
 +------+
