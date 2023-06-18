@@ -54,7 +54,7 @@ int negamax(state_t state, int depth, int color, bool use_tt = true){
         ++expanded;
     }
 
-    for (int i = 0; i < valid_moves.size(); i++){
+    for (long unsigned int i = 0; i < valid_moves.size(); i++){
         int pos = valid_moves[i];
         ++generated;
                 
@@ -98,7 +98,7 @@ int negamax(state_t state, int depth, int alpha, int beta, int color, bool use_t
         alpha = max(alpha, value); 
         ++expanded;
     }
-    for (int i = 0; i < valid_moves.size(); i++){
+    for (long unsigned int i = 0; i < valid_moves.size(); i++){
         int pos = valid_moves[i];
         ++generated;
         state_t child = state.move(color == 1, pos);
@@ -115,7 +115,7 @@ int negamax(state_t state, int depth, int alpha, int beta, int color, bool use_t
 
 };
 
-bool TEST(state_t state, int depth, int score, int color, char * condition){
+bool TEST(state_t state, int depth, int score, int color, string condition){
 
     if (depth == 0 || state.terminal()){
         if (condition == ">"){
@@ -131,9 +131,11 @@ bool TEST(state_t state, int depth, int score, int color, char * condition){
         }        
     }
 
-    for (int pos = 0; pos < DIM; ++pos){
+    std::vector<int> valid_moves = state.get_valid_moves(color == 1);
+    for (long unsigned int i = 0; i < valid_moves.size(); i++){
+        int pos = valid_moves[i];
         state_t child = state.move(color == 1, pos);
-        if (pos == 0){
+        if (i == 0){
             if (color == 1 && TEST(child, depth - 1, score, -color, condition)){
                 return true;
             } else if (color == 0 && !TEST(child, depth - 1, score, -color, condition)){
@@ -151,16 +153,22 @@ int scout(state_t state, int depth, int color, bool use_tt = false){
         return color * state.value();
     }
 
+    std::vector<int> valid_moves = state.get_valid_moves(color == 1);
     int score = 0;
 
-    for (int pos = 0; pos < DIM; ++pos){
-        
+    if (valid_moves.size()==0){
+        score = scout(state, depth - 1, -color, use_tt);
+        ++expanded;
+    }
+
+    for (long unsigned int i = 0; i < valid_moves.size(); i++){
+        int pos = valid_moves[i];
         ++generated;
         state_t child = state.move(color == 1, pos);
         
-        if (pos == 0){
+        if (i == 0){            
             score = scout(child, depth - 1, -color, use_tt);
-        }else {
+        } else {
             // Max node
             if (color == 1 && TEST(child, depth, score, -color, ">")){
                 score = scout(child, depth - 1, -color, use_tt);
@@ -259,8 +267,8 @@ int main(int argc, const char **argv) {
                 value = negamax(pv[i], 35, color, use_tt);
             } else if( algorithm == 2 ) {
                 value = negamax(pv[i], 35, -200, 200, color, use_tt);
-            } else if( algorithm == 3 ) {
-                value = scout(pv[i], 0, color, use_tt);
+            } else if( algorithm == 3 ) {                
+                value = scout(pv[i], 35, color, use_tt);
             } else if( algorithm == 4 ) {
                 value = negascout(pv[i], 0, -200, 200, color, use_tt);
             }
