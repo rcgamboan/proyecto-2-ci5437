@@ -36,7 +36,7 @@ Moving along PV:
 |OO&&OO|
 |&&&&&O|
 +------+
-31. Black moves: value=8, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+31. Black moves: value=8, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |O&&&..|
 |OO&&&O|
@@ -45,7 +45,7 @@ Moving along PV:
 |OO&&&&|
 |&&&&&.|
 +------+
-30. White moves: value=13, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
+30. White moves: value=13, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
 +------+
 |O&&&..|
 |OO&&&O|
@@ -54,7 +54,7 @@ Moving along PV:
 |OO&OO.|
 |&&&&&.|
 +------+
-29. Black moves: value=6, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+29. Black moves: value=6, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |O&&&&O|
@@ -63,7 +63,7 @@ Moving along PV:
 |OO&OO.|
 |&&&&&.|
 +------+
-28. White moves: value=11, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+28. White moves: value=11, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |OO&&&O|
@@ -72,7 +72,7 @@ Moving along PV:
 |OOOOO.|
 |&&&&&.|
 +------+
-27. Black moves: value=0, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+27. Black moves: value=0, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |OO&&&O|
@@ -81,7 +81,7 @@ Moving along PV:
 |OOO&..|
 |&&&&&.|
 +------+
-26. White moves: value=3, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+26. White moves: value=3, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |OO&&&O|
@@ -99,7 +99,7 @@ Moving along PV:
 |.&OO..|
 |&&&&..|
 +------+
-24. White moves: value=5, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+24. White moves: value=5, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |OO&&&O|
@@ -108,7 +108,7 @@ Moving along PV:
 |..OO..|
 |&&&&..|
 +------+
-23. Black moves: value=2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+23. Black moves: value=2, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |.O&&&O|
@@ -117,7 +117,7 @@ Moving along PV:
 |..OO..|
 |&&&&..|
 +------+
-22. White moves: value=7, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+22. White moves: value=7, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |.O&&&O|
@@ -135,7 +135,7 @@ Moving along PV:
 |..O&..|
 |.O.&..|
 +------+
-20. White moves: value=7, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+20. White moves: value=7, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |.O&&&O|
@@ -144,7 +144,7 @@ Moving along PV:
 |..O&..|
 |.O.&..|
 +------+
-19. Black moves: value=2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+19. Black moves: value=2, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |.O&&&O|
@@ -162,7 +162,7 @@ Moving along PV:
 |..&&..|
 |...&..|
 +------+
-17. Black moves: value=2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+17. Black moves: value=2, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |.O&&..|
@@ -171,7 +171,7 @@ Moving along PV:
 |..&&..|
 |...&..|
 +------+
-16. White moves: value=7, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+16. White moves: value=7, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |.O&&..|
@@ -180,7 +180,7 @@ Moving along PV:
 |..&&..|
 |...&..|
 +------+
-15. Black moves: value=2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+15. Black moves: value=2, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |..&&..|
@@ -189,7 +189,7 @@ Moving along PV:
 |..&&..|
 |...&..|
 +------+
-14. White moves: value=7, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+14. White moves: value=7, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |..&&..|
@@ -216,7 +216,7 @@ Moving along PV:
 |..&O..|
 |......|
 +------+
-11. Black moves: value=0, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+11. Black moves: value=0, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |.&&&..|
 |..&O..|
@@ -225,7 +225,7 @@ Moving along PV:
 |..&...|
 |......|
 +------+
-10. White moves: value=5, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+10. White moves: value=5, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |..O&..|
 |..OO..|
@@ -234,7 +234,7 @@ Moving along PV:
 |..&...|
 |......|
 +------+
-9. Black moves: value=0, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+9. Black moves: value=0, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |...&..|
 |..&&..|
@@ -243,7 +243,7 @@ Moving along PV:
 |..&...|
 |......|
 +------+
-8. White moves: value=5, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+8. White moves: value=5, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |......|
 |..&O..|
@@ -252,7 +252,7 @@ Moving along PV:
 |..&...|
 |......|
 +------+
-7. Black moves: value=0, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+7. Black moves: value=0, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |......|
 |..&O..|
@@ -270,7 +270,7 @@ Moving along PV:
 |..&...|
 |......|
 +------+
-5. Black moves: value=-2, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+5. Black moves: value=-2, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |......|
 |..&...|
@@ -279,7 +279,7 @@ Moving along PV:
 |..&...|
 |......|
 +------+
-4. White moves: value=3, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+4. White moves: value=3, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |......|
 |..&...|
@@ -288,7 +288,7 @@ Moving along PV:
 |......|
 |......|
 +------+
-3. Black moves: value=0, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+3. Black moves: value=0, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |......|
 |..&...|
@@ -297,7 +297,7 @@ Moving along PV:
 |......|
 |......|
 +------+
-2. White moves: value=3, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+2. White moves: value=3, #expanded=0, #generated=0, seconds=0, #generated/second=-nan
 +------+
 |......|
 |......|
@@ -306,4 +306,4 @@ Moving along PV:
 |......|
 |......|
 +------+
-1. Black moves: value=0, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
+1. Black moves: value=0, #expanded=0, #generated=0, seconds=0, #generated/second=-nan

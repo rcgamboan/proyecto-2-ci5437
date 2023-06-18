@@ -45,12 +45,20 @@ int negamax(state_t state, int depth, int color, bool use_tt = true){
     }
 
     int alpha = INT_MIN;
+    std::vector<int> valid_moves = state.get_valid_moves(color == 1);
+    if (valid_moves.size()==0){
+        int value = -negamax(state, depth - 1, -color, use_tt);
+        if (value > alpha){
+            alpha = value;
+        }
+        ++expanded;
+    }
 
-    for (int pos = 0; pos < DIM; ++pos){
-        
+    for (int i = 0; i < valid_moves.size(); i++){
+        int pos = valid_moves[i];
         ++generated;
-        state_t child = state.move(color == 1, pos);
-        
+                
+        state_t child = state.move(color == 1, pos);        
         if (use_tt){
             cout << "using Transposition Table" << endl;
             auto it = TTable[color].find(state);
@@ -83,9 +91,15 @@ int negamax(state_t state, int depth, int alpha, int beta, int color, bool use_t
     }
 
     int score = INT_MIN;
-
-    for (int pos = 0; pos < DIM; ++pos){
-        
+    std::vector<int> valid_moves = state.get_valid_moves(color == 1);
+    if (valid_moves.size()==0){
+        int value = -negamax(state, depth - 1, -beta, -alpha, -color, use_tt);
+        score = max(score, value);
+        alpha = max(alpha, value); 
+        ++expanded;
+    }
+    for (int i = 0; i < valid_moves.size(); i++){
+        int pos = valid_moves[i];
         ++generated;
         state_t child = state.move(color == 1, pos);
         int value = -negamax(child, depth - 1, -beta, -alpha, -color, use_tt);
@@ -242,9 +256,9 @@ int main(int argc, const char **argv) {
 
         try {
             if( algorithm == 1 ) {
-                value = negamax(pv[i], 0, color, use_tt);
+                value = negamax(pv[i], 35, color, use_tt);
             } else if( algorithm == 2 ) {
-                value = negamax(pv[i], 0, -200, 200, color, use_tt);
+                value = negamax(pv[i], 35, -200, 200, color, use_tt);
             } else if( algorithm == 3 ) {
                 value = scout(pv[i], 0, color, use_tt);
             } else if( algorithm == 4 ) {
