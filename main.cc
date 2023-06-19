@@ -145,14 +145,14 @@ bool TEST(state_t state, int depth, int score, int color, string condition){
     for (long unsigned int i = 0; i < valid_moves.size(); i++){
         int pos = valid_moves[i];
         state_t child = state.move(color == 1, pos);
-        if (i == 0){
-            if (color == 1 && TEST(child, depth - 1, score, -color, condition)){
-                return true;
-            } else if (color == -1 && !TEST(child, depth - 1, score, -color, condition)){
-                return false;
-            }
+        
+        if (color == 1 && TEST(child, depth - 1, score, -color, condition)){
+            return true;
+        } else if (color == -1 && !TEST(child, depth - 1, score, -color, condition)){
+            return false;
         }
-        break;
+        
+        
     }
     return !(color == 1);
 
@@ -162,7 +162,7 @@ int scout(state_t state, int depth, int color, bool use_tt = false){
 
     if (depth == 0 || state.terminal()){
         
-        return color * state.value();
+        return state.value();
     }
 
     std::vector<int> valid_moves = state.get_valid_moves(color == 1);
@@ -262,7 +262,7 @@ int main(int argc, const char **argv) {
     else if( algorithm == 4 )
         cout << "Negascout";
     cout << (use_tt ? " w/ transposition table" : "") << endl;
-    
+
     // Run algorithm along PV (bacwards)
     cout << "Moving along PV:" << endl;
     for( int i = 0; i <= npv; ++i ) {
