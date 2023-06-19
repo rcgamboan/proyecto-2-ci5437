@@ -200,13 +200,20 @@ int negascout(state_t state, int depth, int alpha, int beta, int color, bool use
         return color * state.value();
     }
 
-    for (int pos = 0; pos < DIM; ++pos){
+    std::vector<int> valid_moves = state.get_valid_moves(color == 1);
+    if (valid_moves.size()==0){
+        int value = -negascout(state, depth - 1, -beta, -alpha, -color, use_tt);
+        alpha = max(alpha, value);
+        ++expanded;
+    }
+    for (long unsigned int i = 0; i < valid_moves.size(); i++){
         
+        int pos = valid_moves[i];
         ++generated;
         state_t child = state.move(color == 1, pos);
         int score;
         
-        if (pos == 0){
+        if (i == 0){
             score = -negascout(child, depth - 1, -beta, -alpha, -color, use_tt);
         } else {
             score = -negascout(child, depth - 1, -alpha - 1, -alpha, -color, use_tt);
@@ -283,7 +290,7 @@ int main(int argc, const char **argv) {
             } else if( algorithm == 3 ) {                
                 value = scout(pv[i], 35, color, use_tt);
             } else if( algorithm == 4 ) {
-                value = negascout(pv[i], 0, -200, 200, color, use_tt);
+                value = negascout(pv[i], 35, -200, 200, color, use_tt);
             }
         } catch( const bad_alloc &e ) {
             cout << "size TT[0]: size=" << TTable[0].size() << ", #buckets=" << TTable[0].bucket_count() << endl;
