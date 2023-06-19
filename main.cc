@@ -58,12 +58,16 @@ int negamax(state_t state, int depth, int color, bool use_tt = true){
     for (long unsigned int i = 0; i < valid_moves.size(); i++){
         int pos = valid_moves[i];
         ++generated;
-                
+        
+
         state_t child = state.move(color == 1, pos);        
         if (use_tt){
-            auto it = TTable[0].find(child);
+
+            int index = color == 1 ? 1 : 0;
+    
+            auto it = TTable[index].find(child);
                 
-            if (it != TTable[0].end()){
+            if (it != TTable[index].end()){
                 // se encuentra el estado en la tabla
                 if (it->second.type_ == stored_info_t::EXACT){
                     return it->second.value_;
@@ -76,19 +80,19 @@ int negamax(state_t state, int depth, int color, bool use_tt = true){
                 }
             } else {
                 // no encuentra el estado en la tabla
-                if (TTable[0].size() == tt_threshold){
-                    TTable[0].clear();
+                if (TTable[index].size() == tt_threshold){
+                    TTable[index].clear();
                 }
 
                 int value = -negamax(child, depth - 1, -color, use_tt);
                 if (value > alpha){
                     alpha = value;
-                    stored_info_t info = stored_info_t(value, stored_info_t::EXACT);
-                    TTable[0].insert({child, info});
+                    stored_info_t info = stored_info_t(alpha, stored_info_t::UPPER);
+                    TTable[index].insert({child, info});
                 }
                 else if (value <= alpha){
-                    stored_info_t info = stored_info_t(alpha, stored_info_t::EXACT);
-                    TTable[0].insert({child, info});
+                    stored_info_t info = stored_info_t(value, stored_info_t::LOWER);
+                    TTable[index].insert({child, info});
                 }
             }
         } else {
