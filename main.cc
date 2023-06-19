@@ -52,6 +52,7 @@ int negamax(state_t state, int depth, int color, bool use_tt = true){
             alpha = value;
         }
         ++expanded;
+        return alpha;
     }
 
     for (long unsigned int i = 0; i < valid_moves.size(); i++){
@@ -60,9 +61,13 @@ int negamax(state_t state, int depth, int color, bool use_tt = true){
                 
         state_t child = state.move(color == 1, pos);        
         if (use_tt){
-            cout << "using Transposition Table" << endl;
-            auto it = TTable[color].find(state);
-            if (it != TTable[color].end()){
+            //cout << "using Transposition Table" << endl;
+            //cout << "buscando estado" << endl;
+            auto it = TTable[0].find(child);
+            //cout << "estado buscado" << endl;
+            // encuentra el estado en la tabla
+            if (it != TTable[0].end()){
+                //cout << "se encontro el estado en la tabla" << endl;
                 if (it->second.type_ == stored_info_t::EXACT){
                     return it->second.value_;
                 }
@@ -71,6 +76,26 @@ int negamax(state_t state, int depth, int color, bool use_tt = true){
                 }
                 else if (it->second.type_ == stored_info_t::UPPER){
                     alpha = max(alpha, it->second.value_);
+                }
+            } else {
+                // no encuentra el estado en la tabla
+                //cout << "no se encontro el estado en la tabla" << endl;
+                //cout << "negamax" << endl;
+                int value = -negamax(child, depth - 1, -color, use_tt);
+                if (value > alpha){
+                    //printf("value: %d\n", value);
+                    //printf("alpha: %d\n", alpha);
+                    alpha = value;
+                    //cout << "guardar informacion" << endl;
+                    stored_info_t info = stored_info_t(value, stored_info_t::EXACT);
+                    TTable[0].insert({child, info});
+                    //cout << "informacion guardada" << endl;
+                }
+                else if (value <= alpha){
+                    //cout << "guardar informacion" << endl;
+                    stored_info_t info = stored_info_t(alpha, stored_info_t::EXACT);
+                    TTable[0].insert({child, info});
+                    //cout << "informacion guardada" << endl;
                 }
             }
         } else {
