@@ -122,6 +122,23 @@ int negamax(state_t state, int depth, int alpha, int beta, int color, bool use_t
         score = max(score, value);
         alpha = max(alpha, value); 
         ++expanded;
+
+        if (use_tt){
+            if (TTable[color == 1].size() == tt_threshold){
+                TTable[color == 1].clear();
+            }
+            stored_info_t info;
+            if (score <= alpha){
+                info.type_ = stored_info_t::UPPER;
+            } else if (score >= beta){
+                info.type_ = stored_info_t::LOWER;
+            } else {
+                info.type_ = stored_info_t::EXACT;
+            }
+            info.value_ = score;
+            TTable[color == 1].insert({state, info});
+        }
+
         return score;
     }
 
@@ -293,11 +310,30 @@ int negascout(state_t state, int depth, int alpha, int beta, int color, bool use
     if (depth == 0 || state.terminal()){
         return color * state.value();
     }
-
+    
+    int score = INT_MIN;
     std::vector<int> valid_moves = state.get_valid_moves(color == 1);
     if (valid_moves.size()==0){
         int value = -negascout(state, depth - 1, -beta, -alpha, -color, use_tt);
         alpha = max(alpha, value);
+        score = max(score, value);
+
+        if (use_tt){
+            if (TTable[color == 1].size() == tt_threshold){
+                TTable[color == 1].clear();
+            }
+            stored_info_t info;
+            if (score <= alpha){
+                info.type_ = stored_info_t::LOWER;
+            } else if (alpha >= beta){
+                info.type_ = stored_info_t::UPPER;
+            } else {
+                info.type_ = stored_info_t::EXACT;
+            }
+            info.value_ = alpha;
+            TTable[color == 1].insert({state, info});
+        }
+
         ++expanded;
     }
     
