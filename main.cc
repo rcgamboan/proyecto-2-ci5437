@@ -305,6 +305,7 @@ int scout(state_t state, int depth, int color, bool use_tt = false){
     return score;
 };
 
+/*
 int negascout(state_t state, int depth, int alpha, int beta, int color, bool use_tt = false){
 
     if (depth == 0 || state.terminal()){
@@ -318,22 +319,6 @@ int negascout(state_t state, int depth, int alpha, int beta, int color, bool use
         alpha = max(alpha, value);
         score = max(score, value);
 
-        if (use_tt){
-            if (TTable[color == 1].size() == tt_threshold){
-                TTable[color == 1].clear();
-            }
-            stored_info_t info;
-            if (score <= alpha){
-                info.type_ = stored_info_t::LOWER;
-            } else if (alpha >= beta){
-                info.type_ = stored_info_t::UPPER;
-            } else {
-                info.type_ = stored_info_t::EXACT;
-            }
-            info.value_ = alpha;
-            TTable[color == 1].insert({state, info});
-        }
-
         ++expanded;
     }
     
@@ -343,29 +328,6 @@ int negascout(state_t state, int depth, int alpha, int beta, int color, bool use
         ++generated;
         state_t child = state.move(color == 1, pos);
         int score;
-
-        
-
-        if (use_tt){
-    
-            auto it = TTable[color==1].find(child);
-                
-            if (it != TTable[color==1].end()){
-                if (it->second.type_ == stored_info_t::EXACT){
-                    return it->second.value_;
-                }
-                else if (it->second.type_ == stored_info_t::LOWER){
-                    alpha = max(alpha, it->second.value_);
-                }
-                else if (it->second.type_ == stored_info_t::UPPER){
-                    beta = min(beta, it->second.value_);
-                }
-                if (alpha >= beta){
-                    return it->second.value_;
-                }
-
-            }  
-        }
 
         if (i == 0){
             score = -negascout(child, depth - 1, -beta, -alpha, -color, use_tt);
@@ -378,22 +340,6 @@ int negascout(state_t state, int depth, int alpha, int beta, int color, bool use
 
         alpha = max(alpha, score);
         
-        if (use_tt){
-            if (TTable[color == 1].size() == tt_threshold){
-                TTable[color == 1].clear();
-            }
-            stored_info_t info;
-            if (score <= alpha){
-                info.type_ = stored_info_t::LOWER;
-            } else if (alpha >= beta){
-                info.type_ = stored_info_t::UPPER;
-            } else {
-                info.type_ = stored_info_t::EXACT;
-            }
-            info.value_ = alpha;
-            TTable[color == 1].insert({child, info});
-        }
-        
         if (alpha >= beta){
             break;
         }
@@ -402,6 +348,82 @@ int negascout(state_t state, int depth, int alpha, int beta, int color, bool use
     }
     return alpha;
 };
+*/
+
+int negascout(state_t state, int depth, int alpha, int beta, int color, bool use_tt = false) {
+
+    if (use_tt) {
+        auto iter = TTable[color==1].find(state);
+        if (iter != TTable[color==1].end()) {
+            const stored_info_t& stored_info = iter->second;
+            if (stored_info.type_ == stored_info_t::EXACT) {
+                return stored_info.value_;
+            } else if (stored_info.type_ == stored_info_t::LOWER) {
+                alpha = max(alpha, stored_info.value_);
+            } else if (stored_info.type_ == stored_info_t::UPPER) {
+                beta = min(beta, stored_info.value_);
+            }
+            if (alpha >= beta) {
+                return stored_info.value_;
+            }
+        }
+    }
+
+    if (depth == 0 || state.terminal()) {
+        return color * state.value();
+    }
+
+    int original_alpha = alpha;
+
+    std::vector<int> valid_moves = state.get_valid_moves(color == 1);
+    if (valid_moves.size() == 0) {
+        int value = -negascout(state, depth - 1, -beta, -alpha, -color, use_tt);
+        alpha = max(alpha, value);
+        ++expanded;
+    }
+
+    for (size_t i = 0; i < valid_moves.size(); i++) {
+        int pos = valid_moves[i];
+        ++generated;
+        state_t child = state.move(color == 1, pos);
+        int score;
+
+        if (i == 0) {
+            score = -negascout(child, depth - 1, -beta, -alpha, -color, use_tt);
+        } else {
+            score = -negascout(child, depth - 1, -alpha - 1, -alpha, -color, use_tt);
+            if (alpha < score && score < beta) {
+                score = -negascout(child, depth - 1, -beta, -score, -color, use_tt);
+            }
+        }
+
+        alpha = max(alpha, score);
+
+        if (alpha >= beta) {
+            break;
+        }
+
+        ++expanded;
+    }
+
+    if (use_tt){
+        stored_info_t stored_info;
+        if (alpha <= original_alpha) {
+            stored_info.value_ = alpha;
+            stored_info.type_ = stored_info_t::UPPER;
+        } else if (alpha >= beta) {
+            stored_info.value_ = alpha;
+            stored_info.type_ = stored_info_t::LOWER;
+        } else {
+            stored_info.value_ = alpha;
+            stored_info.type_ = stored_info_t::EXACT;
+        }
+        TTable[color==1][state] = stored_info;
+    }
+
+    return alpha;
+};
+
 
 int main(int argc, const char **argv) {
     state_t pv[128];
