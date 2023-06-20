@@ -63,7 +63,7 @@ int negamax(state_t state, int depth, int color, bool use_tt = true){
         state_t child = state.move(color == 1, pos);        
         if (use_tt){
 
-            int index = color == 1 ? 1 : 0;
+            int index = color == 1;
     
             auto it = TTable[index].find(child);
                 
@@ -85,15 +85,17 @@ int negamax(state_t state, int depth, int color, bool use_tt = true){
                 }
 
                 int value = -negamax(child, depth - 1, -color, use_tt);
+                stored_info_t info;
                 if (value > alpha){
                     alpha = value;
-                    stored_info_t info = stored_info_t(alpha, stored_info_t::UPPER);
-                    TTable[index].insert({child, info});
+                    info.type_ = stored_info_t::UPPER;
+                    info.value_ = alpha;                    
                 }
                 else if (value <= alpha){
-                    stored_info_t info = stored_info_t(value, stored_info_t::LOWER);
-                    TTable[index].insert({child, info});
+                    info.type_ = stored_info_t::LOWER;
+                    info.value_ = value;
                 }
+                TTable[index].insert({child, info});
             }
         } else {
             int value = -negamax(child, depth - 1, -color, use_tt);
@@ -121,60 +123,57 @@ int negamax(state_t state, int depth, int alpha, int beta, int color, bool use_t
         ++expanded;
         return score;
     }
+
     for (long unsigned int i = 0; i < valid_moves.size(); i++){
         int pos = valid_moves[i];
         ++generated;
         state_t child = state.move(color == 1, pos);
 
         if (use_tt){
-
-            int index = color == 1 ? 1 : 0;
+            // se busca el estado en la tabla
+            int index = color == 1;
     
             auto it = TTable[index].find(child);
                 
             if (it != TTable[index].end()){
-                // se encuentra el estado en la tabla
                 if (it->second.type_ == stored_info_t::EXACT){
                     return it->second.value_;
                 }
                 else if (it->second.type_ == stored_info_t::LOWER){
-                    score = max(score, it->second.value_);
+                    alpha = max(alpha, it->second.value_);
                 }
                 else if (it->second.type_ == stored_info_t::UPPER){
-                    score = max(score, it->second.value_);
+                    beta = min(beta, it->second.value_);
                 }
-            } else {
-                // no encuentra el estado en la tabla
-                if (TTable[index].size() == tt_threshold){
-                    TTable[index].clear();
-                }
-
-                int value = -negamax(child, depth - 1, -beta, -alpha, -color, use_tt);
-                score = max(score, value);
-                alpha = max(alpha, value);
-
-                if (value > score){
-                    stored_info_t info = stored_info_t(score, stored_info_t::LOWER);
-                    TTable[index].insert({child, info});   
-                }else if (value <= score){
-                    stored_info_t info = stored_info_t(value, stored_info_t::UPPER);
-                    TTable[index].insert({child, info});   
-                }
-
                 if (alpha >= beta){
-                    break;
+                    return it->second.value_;
                 }
-            }
-            
-        } else{
-            int value = -negamax(child, depth - 1, -beta, -alpha, -color, use_tt);
-            score = max(score, value);
-            alpha = max(alpha, value);
-            if (alpha >= beta){
-                break;
-            }
-        }
+
+            }             
+        } 
         
+        int value = -negamax(child, depth - 1, -beta, -alpha, -color, use_tt);
+        score = max(score, value);
+        alpha = max(alpha, value);
+        if (alpha >= beta){
+            break;
+        }
+
+        if (use_tt){
+            if (TTable[color == 1].size() == tt_threshold){
+                TTable[color == 1].clear();
+            }
+            stored_info_t info;
+            if (score <= alpha){
+                info.type_ = stored_info_t::UPPER;
+            } else if (score >= beta){
+                info.type_ = stored_info_t::LOWER;
+            } else {
+                info.type_ = stored_info_t::EXACT;
+            }
+            info.value_ = score;
+            TTable[color == 1].insert({child, info});
+        }        
         ++expanded;
         
     }
@@ -246,7 +245,7 @@ int scout(state_t state, int depth, int color, bool use_tt = false){
         state_t child = state.move(color == 1, pos);
         
         if (use_tt){
-            int index = color == 1 ? 1 : 0;
+            int index = color == 1;
     
             auto it = TTable[index].find(child);
                 
@@ -310,7 +309,9 @@ int negascout(state_t state, int depth, int alpha, int beta, int color, bool use
         int value = -negascout(state, depth - 1, -beta, -alpha, -color, use_tt);
         alpha = max(alpha, value);
         ++expanded;
+        return alpha;
     }
+    
     for (long unsigned int i = 0; i < valid_moves.size(); i++){
         
         int pos = valid_moves[i];
