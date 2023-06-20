@@ -305,51 +305,6 @@ int scout(state_t state, int depth, int color, bool use_tt = false){
     return score;
 };
 
-/*
-int negascout(state_t state, int depth, int alpha, int beta, int color, bool use_tt = false){
-
-    if (depth == 0 || state.terminal()){
-        return color * state.value();
-    }
-    
-    int score = INT_MIN;
-    std::vector<int> valid_moves = state.get_valid_moves(color == 1);
-    if (valid_moves.size()==0){
-        int value = -negascout(state, depth - 1, -beta, -alpha, -color, use_tt);
-        alpha = max(alpha, value);
-        score = max(score, value);
-
-        ++expanded;
-    }
-    
-    for (long unsigned int i = 0; i < valid_moves.size(); i++){
-        
-        int pos = valid_moves[i];
-        ++generated;
-        state_t child = state.move(color == 1, pos);
-        int score;
-
-        if (i == 0){
-            score = -negascout(child, depth - 1, -beta, -alpha, -color, use_tt);
-        } else {
-            score = -negascout(child, depth - 1, -alpha - 1, -alpha, -color, use_tt);
-            if (alpha < score && score < beta){
-                score = -negascout(child, depth - 1, -beta, -score, -color, use_tt);
-            }
-        }       
-
-        alpha = max(alpha, score);
-        
-        if (alpha >= beta){
-            break;
-        }
-
-        ++expanded;
-    }
-    return alpha;
-};
-*/
-
 int negascout(state_t state, int depth, int alpha, int beta, int color, bool use_tt = false) {
 
     if (use_tt) {
