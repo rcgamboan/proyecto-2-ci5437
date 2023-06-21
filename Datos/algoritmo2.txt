@@ -1,0 +1,218 @@
+Extracting principal variation (PV) with 33 plays ... done!
+Algorithm: Negamax (alpha-beta version)
+Moving along PV:
++------+
+|OOOOO&|
+|OO&O&O|
+|&&O&OO|
+|&&&OOO|
+|OO&&OO|
+|&&&&&O|
++------+
+34. White moves: value=-4, #expanded=0, #generated=0, seconds=1.00001e-06, #generated/second=0
++------+
+|OOOOO.|
+|OO&OOO|
+|&&O&OO|
+|&&&OOO|
+|OO&&OO|
+|&&&&&O|
++------+
+33. Black moves: value=-4, #expanded=1, #generated=1, seconds=3.00002e-06, #generated/second=333331
++------+
+|O&&&..|
+|OO&&&O|
+|&&O&&O|
+|&&&O&O|
+|OO&&OO|
+|&&&&&O|
++------+
+32. White moves: value=-4, #expanded=3, #generated=4, seconds=3.00002e-06, #generated/second=1.33332e+06
++------+
+|O&&&..|
+|OO&&&O|
+|&&O&&O|
+|&&&O&O|
+|OO&&OO|
+|&&&&&O|
++------+
+31. Black moves: value=-4, #expanded=4, #generated=4, seconds=2.00002e-06, #generated/second=1.99998e+06
++------+
+|O&&&..|
+|OO&&&O|
+|&&O&&O|
+|&&&O&O|
+|OO&&&&|
+|&&&&&.|
++------+
+30. White moves: value=-4, #expanded=11, #generated=11, seconds=5.99993e-06, #generated/second=1.83336e+06
++------+
+|O&&&..|
+|OO&&&O|
+|&&O&&O|
+|&&&OOO|
+|OO&OO.|
+|&&&&&.|
++------+
+29. Black moves: value=-4, #expanded=12, #generated=12, seconds=5.99993e-06, #generated/second=2.00002e+06
++------+
+|.&&&..|
+|O&&&&O|
+|&&&&&O|
+|&&&OOO|
+|OO&OO.|
+|&&&&&.|
++------+
+28. White moves: value=-4, #expanded=20, #generated=23, seconds=1.1e-05, #generated/second=2.09092e+06
++------+
+|.&&&..|
+|OO&&&O|
+|.OO&&O|
+|&O&OOO|
+|OOOOO.|
+|&&&&&.|
++------+
+27. Black moves: value=-4, #expanded=60, #generated=74, seconds=3.3e-05, #generated/second=2.24242e+06
++------+
+|.&&&..|
+|OO&&&O|
+|.OO&&O|
+|&O&OOO|
+|OOO&..|
+|&&&&&.|
++------+
+26. White moves: value=-4, #expanded=164, #generated=210, seconds=9.8e-05, #generated/second=2.14286e+06
++------+
+|.&&&..|
+|OO&&&O|
+|.OO&&O|
+|&O&OOO|
+|OOOO..|
+|&&&&..|
++------+
+25. Black moves: value=-4, #expanded=681, #generated=894, seconds=0.000407, #generated/second=2.19656e+06
++------+
+|.&&&..|
+|OO&&&O|
+|.OO&&O|
+|&&&OOO|
+|.&OO..|
+|&&&&..|
++------+
+24. White moves: value=-4, #expanded=1014, #generated=1338, seconds=0.000604, #generated/second=2.21523e+06
++------+
+|.&&&..|
+|OO&&&O|
+|.OO&&O|
+|&&OOOO|
+|..OO..|
+|&&&&..|
++------+
+23. Black moves: value=-4, #expanded=2685, #generated=3578, seconds=0.00174, #generated/second=2.05632e+06
++------+
+|.&&&..|
+|.O&&&O|
+|.&O&&O|
+|&&&OOO|
+|..OO..|
+|&&&&..|
++------+
+22. White moves: value=-4, #expanded=6010, #generated=8095, seconds=0.003796, #generated/second=2.13251e+06
++------+
+|.&&&..|
+|.O&&&O|
+|.&O&&O|
+|&&&OOO|
+|..OO..|
+|.OO&..|
++------+
+21. Black moves: value=-4, #expanded=64011, #generated=87283, seconds=0.039802, #generated/second=2.19293e+06
++------+
+|.&&&..|
+|.O&&&O|
+|.&O&&O|
+|&&&O&O|
+|..O&..|
+|.O.&..|
++------+
+20. White moves: value=-4, #expanded=83420, #generated=112358, seconds=0.052272, #generated/second=2.14949e+06
++------+
+|.&&&..|
+|.O&&&O|
+|.OO&&O|
+|.O&O&O|
+|..O&..|
+|.O.&..|
++------+
+19. Black moves: value=-4, #expanded=176497, #generated=234268, seconds=0.109327, #generated/second=2.14282e+06
++------+
+|.&&&..|
+|.O&&&O|
+|.OO&&O|
+|.O&O&O|
+|..&&..|
+|...&..|
++------+
+18. White moves: value=-4, #expanded=790688, #generated=1124390, seconds=0.525499, #generated/second=2.13966e+06
++------+
+|.&&&..|
+|.O&&.O|
+|.OO&OO|
+|.O&O&O|
+|..&&..|
+|...&..|
++------+
+17. Black moves: value=-4, #expanded=1280099, #generated=1811274, seconds=0.851329, #generated/second=2.12758e+06
++------+
+|.&&&..|
+|.O&&..|
+|.OO&&&|
+|.O&O&O|
+|..&&..|
+|...&..|
++------+
+16. White moves: value=-4, #expanded=18433803, #generated=26557311, seconds=11.6598, #generated/second=2.27768e+06
++------+
+|.&&&..|
+|.O&&..|
+|.OO&O.|
+|.O&OOO|
+|..&&..|
+|...&..|
++------+
+15. Black moves: value=-4, #expanded=26443041, #generated=39439080, seconds=17.7691, #generated/second=2.21953e+06
++------+
+|.&&&..|
+|..&&..|
+|.&&&O.|
+|.O&OOO|
+|..&&..|
+|...&..|
++------+
+14. White moves: value=-4, #expanded=64407083, #generated=97517568, seconds=43.8673, #generated/second=2.22301e+06
++------+
+|.&&&..|
+|..&&..|
+|..O&O.|
+|.OOOOO|
+|..&&..|
+|...&..|
++------+
+13. Black moves: value=-4, #expanded=247394855, #generated=378528257, seconds=163.727, #generated/second=2.31195e+06
++------+
+|.&&&..|
+|..&&..|
+|..O&O.|
+|.O&&&.|
+|..&&..|
+|...&..|
++------+
+12. White moves: value=-4, #expanded=1746703473, #generated=2661793153, seconds=1125.38, #generated/second=2.36525e+06
++------+
+|.&&&..|
+|..&O..|
+|..OOO.|
+|.O&O&.|
+|..&O..|
+|......|
++------+
