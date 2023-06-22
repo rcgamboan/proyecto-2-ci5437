@@ -401,12 +401,6 @@ int main(int argc, const char **argv) {
     pv[0] = state;
     cout << "done!" << endl;
 
-    // print principal variation
-    /*
-    for( int i = 0; i <= npv; ++i ){
-        cout << pv[npv - i];
-    }
-    */
 
     // Print name of algorithm
     cout << "Algorithm: ";

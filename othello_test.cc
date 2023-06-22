@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <limits>
-#include "othello_cut.h" // won't work correctly until .h is fixed!
+#include "othello_cut.h"
 #include "utils.h"
 #include <climits>
 
@@ -32,6 +32,7 @@ int main(int argc, const char **argv) {
     for( int i = 0; test[i] != -1; ++i ) {
         bool player = i % 2 == 0; // black moves first!
 
+        // Obtener los movimientos validos y ver su comportamiento.
         std::vector<int> valid_moves = state.get_valid_moves(player);
 
         for (int i=0; i<valid_moves.size(); i++){
